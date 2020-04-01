@@ -43,3 +43,45 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+def is_bangalore_fixed_phone(phone):
+	return phone[0:5] == '(080)'
+
+def get_phone_prefix(phone):
+	#Landline case
+	if phone[0:2] == "(0": #Landline always starts with (0
+		closing_bracket_position = phone.index(")") + 1
+		return phone[0:closing_bracket_position] #Sometimes code is bigger
+
+	#Telemarketer
+	if phone[0:3] == "140":
+		return phone[0:3] #Always 140
+
+	#All other cases are mobile phones
+	if phone.index(" ") != -1:
+		return phone[0:4]
+	return phone
+
+bangalore_called_phones = set()
+bangalore_sorted_called_phones_prefix = set()
+for call in calls:
+	if is_bangalore_fixed_phone(call[0]):
+		bangalore_called_phones.add(call[1])
+		bangalore_sorted_called_phones_prefix.add(get_phone_prefix(call[1]))
+
+bangalore_sorted_called_phones_prefix = list(bangalore_sorted_called_phones_prefix)
+bangalore_sorted_called_phones_prefix.sort()
+#First Part
+print("The numbers called by people in Bangalore have codes:")
+for phone in bangalore_sorted_called_phones_prefix:
+	print(phone)
+
+#Second part
+count = 0
+for phone in bangalore_called_phones:
+	if is_bangalore_fixed_phone(phone):
+		count += 1 	
+print()
+print("{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(
+		percentage = round(count / len(bangalore_called_phones)*100, 2)
+	)
+)

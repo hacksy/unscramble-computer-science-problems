@@ -61,11 +61,11 @@ def get_phone_prefix(phone):
 		return phone[0:4]
 	return phone
 
-bangalore_called_phones = set()
+bangalore_called_phones = []
 bangalore_sorted_called_phones_prefix = set()
 for call in calls:
 	if is_bangalore_fixed_phone(call[0]):
-		bangalore_called_phones.add(call[1])
+		bangalore_called_phones.append(call[1])
 		bangalore_sorted_called_phones_prefix.add(get_phone_prefix(call[1]))
 
 bangalore_sorted_called_phones_prefix = list(bangalore_sorted_called_phones_prefix)

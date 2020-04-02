@@ -26,10 +26,9 @@ print("First record of texts, {incoming_number} texts {answering_number} at time
         time = texts[0][2]
     ))
 
-calls_size = len(calls) - 1
 print("Last record of calls, {incoming_number} calls {answering_number} at time {time}, lasting {during} seconds".format(
-        incoming_number = calls[calls_size][0],
-        answering_number = calls[calls_size][1],
-        time = calls[calls_size][2],
-        during = calls[calls_size][3]
+        incoming_number = calls[-1][0],
+        answering_number = calls[-1][1],
+        time = calls[-1][2],
+        during = calls[-1][3]
     ))

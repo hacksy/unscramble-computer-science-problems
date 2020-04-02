@@ -3,7 +3,7 @@ This file explains the run time analysis (Worst Case Big O Notation) for each so
 Used https://www.bigocheatsheet.com/ as reference
 
 ## Task0
-The Task0 runs in O(1), because we are directly accesing the first and last item of an array.
+The Task0 runs in O(1), because we are directly accesing the first and last item (using -1 to directly get the last position) of an array.
 According to stackoverflow , because you need only the start position in memory , plus the array position.
 
 
